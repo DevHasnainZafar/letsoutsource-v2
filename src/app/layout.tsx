@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "@/shared/layout/navbar/Navbar";
+import Footer from "@/shared/layout/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Let's OutSource",
@@ -45,7 +47,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
