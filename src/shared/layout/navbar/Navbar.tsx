@@ -13,12 +13,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-green-400 items-center flex md:justify-between border-b-[1.5px] border-[#FFFFFF52 border-red-400 py-4 md:max-w-[1200px] max-w-[95%] mx-auto">
+    <nav className="bg-green-800 items-center flex md:justify-between border-b-[1.5px] border-[#FFFFFF52 border-red-400 py-4 md:max-w-[1200px] max-w-[95%] mx-auto">
       <Image
         src="/whitelogo.png"
         alt="letsoutsource"
         height={100}
         width={100}
+        className="mt-3"
       />
       <div className="flex gap-9">
         {navLinks.map((link) =>
