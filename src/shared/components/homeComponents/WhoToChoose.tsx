@@ -63,8 +63,6 @@ const WhoToChoose = () => {
               className="absolute inset-0 -z-10 object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[rgba(0,0,0,0.4)] to-[rgba(0,0,0,0.8)]" />
-
-            {/* Centered Number Circle */}
             <div className="absolute top-6 left-1/2 -translate-x-1/2 bg-[#FFFFFF29] w-12 h-12 rounded-full flex items-center justify-center">
               <span className="text-white text-[28px] font-semibold font-sora">
                 {card.id}

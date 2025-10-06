@@ -14,3 +14,19 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
+
+@keyframes pulse-smooth {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+.animate-pulse-smooth {
+  animation: pulse-smooth 6s ease-in-out infinite;
+}
