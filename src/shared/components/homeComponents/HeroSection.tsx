@@ -157,7 +157,7 @@ const HeroSection = () => {
             />
           </div>
         ))}
-        <div className="absolute inset-0 bg-black/66 -z-10" />
+        <div className="absolute inset-0 bg-black/75 -z-10" />
         <div className="flex flex-col justify-between flex-1 text-white text-center">
           <div className="flex flex-col items-center justify-center flex-1 space-y-4 px-4">
             <h1 className="font-sora font-semibold text-[36px] md:text-[46px] leading-[46px] md:leading-[56px] tracking-[-1.28px]">
