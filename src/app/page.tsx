@@ -21,8 +21,12 @@ export default function Home() {
       <WhoToChoose />
       <PartnersLogos />
       <ContactUs />
-      <HomeTestimonials />
-      <PerfectPartnerBanner />
+      <div className="relative">
+        <HomeTestimonials />
+        <div className="absolute -bottom-15 left-0 w-full">
+          <PerfectPartnerBanner />
+        </div>
+      </div>
     </>
   );
 }
