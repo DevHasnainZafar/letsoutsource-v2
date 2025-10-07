@@ -190,7 +190,6 @@ const HeroSection = () => {
                 className="flex flex-col items-center justify-center space-y-2"
               >
                 <h1 className="font-sora font-semibold text-[28px] md:text-[48px] leading-[38px] md:leading-[52px] tracking-[-1.28px]">
-                  {/* Split each digit and animate individually */}
                   {item.value.split("").map((digit, dIndex) => (
                     <span
                       key={`${digit}-${flipStates[index]}-${dIndex}`}
