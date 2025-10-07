@@ -22,7 +22,7 @@ const ContactUs = () => {
         ensure every ride is dispatched smoothly, accurately, and on
         time—providing both drivers and passengers with a reliable experience.
       </p>
-      <div className="relative mt-25 bg-[#FAFAFA] border border-[#E6E6E6] rounded-3xl max-w-[600px] mx-auto px-8 py-10 shadow-md hover:shadow-xl">
+      <div className="relative mt-20 bg-[#FAFAFA] border border-[#E6E6E6] rounded-3xl max-w-[600px] mx-auto px-8 py-10 shadow-md hover:shadow-xl">
         <div className="flex justify-center mb-4 text-center">
           <Image
             src="/blacklogo.png"
