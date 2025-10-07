@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-const TaxiService = () => {
+const OutsourcingService = () => {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const TaxiService = () => {
     <div className="relative w-full h-[90vh] md:h-[750px] overflow-hidden flex flex-col">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/hero1.png"
+          src="/writingwoman.png"
           alt="letsoutsource hero"
           fill
           priority
@@ -32,7 +32,7 @@ const TaxiService = () => {
             animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          Taxi Booking
+          Outsourcing
           <br />
           Services
         </h1>
@@ -56,4 +56,4 @@ const TaxiService = () => {
   );
 };
 
-export default TaxiService;
+export default OutsourcingService;

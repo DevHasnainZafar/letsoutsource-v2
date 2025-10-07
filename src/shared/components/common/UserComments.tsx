@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import PerfectPartnerBanner from "./PerfectPartnerBanner";
 const comments = [
   {
     name: "James Walker",
@@ -96,7 +97,7 @@ const UserComments = () => {
   const columns = [col1, col2, col3, col4];
 
   return (
-    <section className="w-full py-24 bg-white">
+    <section className="relative w-full pt-24 pb-80 bg-white">
       <div className="max-w-[1200px] mx-auto px-4">
         <p className="font-poppins font-medium text-[16px] leading-[24px] text-center text-[#000000B8] mb-2 uppercase">
           Testimonial
@@ -147,6 +148,9 @@ const UserComments = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="absolute left-0 right-0 -bottom-20">
+        <PerfectPartnerBanner />
       </div>
     </section>
   );

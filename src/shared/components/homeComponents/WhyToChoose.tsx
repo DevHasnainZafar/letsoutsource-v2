@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 
-const WhoToChoose = () => {
+const WhyToChoose = () => {
   const cards = [
     {
       id: 1,
@@ -30,7 +30,7 @@ const WhoToChoose = () => {
   return (
     <section className="max-w-[1200px] mx-auto py-16 text-center">
       <p className="text-[#000000B8] font-medium text-[14px] leading-6 font-sora">
-        WHO TO CHOOSE US
+        WHY TO CHOOSE US
       </p>
 
       <h2 className="text-[#000] font-semibold text-[40px] leading-[100%] mt-2 font-sora">
@@ -84,4 +84,4 @@ const WhoToChoose = () => {
   );
 };
 
-export default WhoToChoose;
+export default WhyToChoose;

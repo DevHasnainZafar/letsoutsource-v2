@@ -2,7 +2,7 @@ import {
   HeroSection,
   HomeServices,
   HomeTestimonials,
-  WhoToChoose,
+  WhyToChoose,
   WhoWeAre,
 } from "@/shared/components/homeComponents";
 
@@ -18,7 +18,7 @@ export default function Home() {
       <HeroSection />
       <WhoWeAre />
       <HomeServices />
-      <WhoToChoose />
+      <WhyToChoose />
       <PartnersLogos />
       <ContactUs />
       <div className="relative">
