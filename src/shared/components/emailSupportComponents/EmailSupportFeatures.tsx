@@ -1,31 +1,26 @@
 import React from "react";
 
-const SupportFeatures = () => {
+const EmailSupportFeatures = () => {
   const features = [
     {
       id: "I",
-      title: "24/7 Live Chat Support",
-      desc: "Get instant assistance anytime with our 24/7 live chat, ensuring your customers are never left waiting for support.",
+      title: "Instant Engagement:",
+      desc: "Our email support team helps you build meaningful customer connections from the moment they visit your website.",
     },
     {
       id: "II",
-      title: "Email Support with Fast Response Times",
-      desc: "We deliver quick and accurate email responses, keeping your communication smooth, professional, and always reliable.",
+      title: "Data Collection:",
+      desc: "Outsource your email support to LetOutsource and deliver personalized experiences through data-driven insights.",
     },
     {
       id: "III",
-      title: "Dedicated Support Managers",
-      desc: "A single dedicated manager as your point of contact, ensuring personalized support that truly understands your needs.",
+      title: "Stronger, Long-Term Relationships:",
+      desc: "Our email support builds lasting customer relationships by showing genuine care and value for their feedback.",
     },
     {
       id: "IV",
       title: "Comprehensive FAQs and Help Center",
-      desc: "Comprehensive self-service resources that empower customers with faster, hassle-free problem-solving.",
-    },
-    {
-      id: "V",
-      title: "Multi-Language Support Available",
-      desc: "Seamless multi-language support that lets your customers communicate with ease in the language they prefer.",
+      desc: "Our email support is cost-effective, boosting conversions and driving revenue growth.",
     },
   ];
 
@@ -76,4 +71,4 @@ const SupportFeatures = () => {
   );
 };
 
-export default SupportFeatures;
+export default EmailSupportFeatures;
