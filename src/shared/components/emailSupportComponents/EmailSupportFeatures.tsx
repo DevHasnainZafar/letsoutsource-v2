@@ -1,5 +1,4 @@
-import React from "react";
-
+import PerfectPartnerBanner from "../common/PerfectPartnerBanner";
 const EmailSupportFeatures = () => {
   const features = [
     {
@@ -25,7 +24,7 @@ const EmailSupportFeatures = () => {
   ];
 
   return (
-    <section className="w-full py-30">
+    <section className="w-full pt-30 pb-100 relative">
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-start justify-between gap-12 px-4">
         <div className="lg:w-[40%]">
           <p className="font-poppins font-medium text-[16px] leading-[24px] text-[#000000B8] uppercase mb-2">
@@ -66,6 +65,9 @@ const EmailSupportFeatures = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="absolute left-0 right-0 -bottom-20">
+        <PerfectPartnerBanner />
       </div>
     </section>
   );

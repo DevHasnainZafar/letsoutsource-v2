@@ -1,30 +1,28 @@
-import React from "react";
-
+import Image from "next/image";
 const EmailSupportSpecialized = () => {
   const services = [
     {
-      iconImage: "usericon.png",
+      iconImage: "/usericon.png",
       title: "Enhance Customer Experience",
       description:
         "Personalized support that builds trust and boosts satisfaction.",
     },
     {
-      iconImage: "personicon.png",
+      iconImage: "/personicon.png",
       title: "Track Trends, Unlock Growth.",
       description:
         "Stay updated on key trends and opportunities to drive smarter business growth.",
     },
     {
-      iconImage: "timeicon.png",
+      iconImage: "/timeicon.png",
       title: "Fast, Reliable Email Support.",
       description:
         "Our email support ensures timely responses and better customer interactions.",
     },
   ];
-
   return (
-    <div className="min-h-screen max-w-[1200px] mx-auto py-25">
-      <div className="">
+    <div className="min-h-screen max-w-[1200px] mx-auto pt-25 pb-15">
+      <div>
         <div className="text-center mb-16">
           <p className="text-gray-600 font-medium text-base leading-6 tracking-normal mb-2">
             SPECIALIZED
@@ -46,11 +44,14 @@ const EmailSupportSpecialized = () => {
                 className="bg-white rounded-[14px] cursor-pointer max-w-[520px] pl-4 py-5 pr-2 transition-shadow flex-1 shadow-[0px_4px_6px_0px_#00000014] hover:shadow-md"
               >
                 <div className="flex items-start gap-4">
+                  {/* Icon */}
                   <div className="flex-shrink-0">
-                    <img
+                    <Image
                       src={service.iconImage}
                       alt={service.title}
-                      className="w-12 h-12 object-contain"
+                      width={48}
+                      height={48}
+                      className="object-contain"
                     />
                   </div>
                   <div className="flex-1 flex flex-col gap-1">
@@ -67,10 +68,13 @@ const EmailSupportSpecialized = () => {
           </div>
           <div className="lg:pl-8 flex items-stretch">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full flex-1">
-              <img
-                src="workingperson.png"
+              <Image
+                src="/workingperson.png"
                 alt="Person working on laptop"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
               />
             </div>
           </div>
