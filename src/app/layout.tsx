@@ -6,9 +6,7 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Let's OutSource",
-  icons: {
-    icon: "/Letoutsource-favicon.ico",
-  },
+  icons: { icon: "/Letoutsource-favicon.ico" },
   keywords: [
     "customer support outsourcing",
     "call center services",
@@ -40,7 +38,6 @@ export const metadata: Metadata = {
   description:
     "Let’s Outsource specialized in outsourced call center services to different businesses around the world. We are specialized in booking and dispatch services and are fully trained on all dispatch softwares",
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{

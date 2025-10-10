@@ -1,43 +1,51 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const AboutCards = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [lockScroll, setLockScroll] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const card1Ref = useRef<HTMLDivElement>(null);
+  const card2Ref = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (!scrollRef.current) return;
-      const section = scrollRef.current;
-      const rect = section.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const startPoint = windowHeight * 0.3;
-      const endPoint = -windowHeight * 0.3;
-      const range = startPoint - endPoint;
-      const current = Math.min(Math.max(startPoint - rect.top, 0), range);
-      const progress = current / range;
-      setScrollProgress(Math.min(Math.max(progress, 0), 1));
-      const inView =
-        rect.top < windowHeight * 1 && rect.bottom > windowHeight * 2;
-      setLockScroll(inView);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
+    const section = sectionRef.current;
+    const card1 = card1Ref.current;
+    const card2 = card2Ref.current;
+
+    if (!section || !card1 || !card2) return;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: "+=250%",
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+      },
+    });
+    tl.fromTo(card1, { yPercent: 0 }, { yPercent: -50, duration: 1 });
+    tl.fromTo(
+      card2,
+      { yPercent: 100, opacity: 0 },
+      { yPercent: 0, opacity: 1, ease: "power2.out", duration: 1 },
+      ">0.2"
+    );
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      document.body.style.overflow = "auto";
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-  useEffect(() => {
-    if (lockScroll) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [lockScroll]);
+
   return (
-    <div className="w-full max-w-[1200px] mx-auto pt-20 pb-40 flex flex-col relative">
+    <div
+      ref={sectionRef}
+      className="w-full max-w-[1200px] mx-auto pt-20 pb-40 flex flex-col relative"
+    >
       <div className="flex flex-col md:flex-row justify-between items-center gap-10 mb-28">
         <div className="text-center md:text-left">
           <h4 className="text-[#000000B8] font-medium text-[16px] leading-[24px]">
@@ -54,8 +62,11 @@ const AboutCards = () => {
           growth.
         </div>
       </div>
-      <div ref={scrollRef} className="relative h-[430px] overflow-hidden">
-        <div className="absolute inset-0 flex flex-col md:flex-row items-center md:items-stretch md:justify-start gap-10 md:gap-0">
+      <div className="relative h-[430px] overflow-hidden">
+        <div
+          ref={card1Ref}
+          className="absolute inset-0 flex flex-col md:flex-row items-center md:items-stretch md:justify-start gap-10 md:gap-0 z-10"
+        >
           <div className="relative w-full md:w-[65%] rounded-2xl overflow-hidden shadow-sm border border-[#F0F0F0] h-[430px] flex items-center">
             <Image
               src="/orangebg.png"
@@ -83,16 +94,13 @@ const AboutCards = () => {
               src="/availableman.png"
               alt="Customer Support Team"
               fill
-              className="object-inherit"
+              className="object-cover"
             />
           </div>
         </div>
         <div
-          className="absolute inset-0 flex flex-col md:flex-row-reverse items-center md:items-stretch md:justify-between gap-10 md:gap-0 z-30"
-          style={{
-            transform: `translateY(${(1 - scrollProgress) * 100}%)`,
-            transition: "transform 0.15s linear",
-          }}
+          ref={card2Ref}
+          className="absolute inset-0 flex flex-col md:flex-row-reverse items-center md:items-stretch md:justify-between gap-10 md:gap-0 z-20"
         >
           <div className="relative md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 w-full md:w-[50%] rounded-xl overflow-hidden border border-[#00000014] h-[280px] md:h-[430px] shadow-md z-20">
             <Image
