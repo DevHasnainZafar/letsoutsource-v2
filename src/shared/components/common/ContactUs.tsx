@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import Image from "next/image";
-import { validateContactForm } from "@/core/utils/validations";
+import { validateContactForm } from "../../../../utils/validations";
 
 interface FormData {
   name: string;

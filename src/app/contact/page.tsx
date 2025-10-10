@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { validateContactForm } from "@/core/utils/validations";
+import { validateContactForm } from "../../../utils/validations";
 
 interface FormData {
   name: string;
