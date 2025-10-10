@@ -1,14 +1,40 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { validateContactForm } from "@/core/utils/validations";
+
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
 
 const ContactPage = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const images = ["/hero1.png", "/hero2.png", "/hero3.png"];
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const images: string[] = ["/hero1.png", "/hero2.png", "/hero3.png"];
   const slideTexts = [
     { title: "Trusted Partner in\nOutsourcing" },
     { title: "Reliable Support,\nAnytime" },
     { title: "Your Business, Our\nResponsibility" },
   ];
+
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitMessage, setSubmitMessage] = useState<string>("");
+  const [submitError, setSubmitError] = useState<string>("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -17,10 +43,71 @@ const ContactPage = () => {
     return () => clearInterval(interval);
   }, [images.length]);
 
-  const getImageAnimation = (index: number) => {
+  const getImageAnimation = (index: number): string => {
     if (index === 0) return "animate-kenBurnsUp";
     if (index === 1) return "animate-kenBurnsLeftToRight";
     return "animate-kenBurnsRightToLeft";
+  };
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+    if (errors[id as keyof FormErrors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [id]: "",
+      }));
+    }
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitMessage("");
+    setSubmitError("");
+    const { isValid, errors: validationErrors } = validateContactForm(formData);
+    if (!isValid) {
+      setErrors(validationErrors);
+      return;
+    }
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitMessage(
+          "Email sent successfully! We'll get back to you soon."
+        );
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setErrors({});
+      } else {
+        setSubmitError(
+          data.message || "Failed to send email. Please try again."
+        );
+      }
+    } catch (error) {
+      setSubmitError("An error occurred. Please try again later.");
+      console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -85,7 +172,7 @@ const ContactPage = () => {
           ))}
           <div className="absolute inset-0 bg-black/70" />
           <div className="absolute inset-0 z-10">
-            <div className="max-w-[1200px] mx-auto  h-full flex flex-col lg:flex-row justify-between gap-12">
+            <div className="  h-full flex flex-col lg:flex-row justify-between gap-12">
               <div className="w-full lg:w-1/2 flex flex-col justify-end mb-2 items-center text-center">
                 <div>
                   <h1 className="text-white text-center text-[44px] font-semibold leading-[120%] whitespace-pre-line">
@@ -108,7 +195,7 @@ const ContactPage = () => {
                 </div>
               </div>
               <div className="w-full lg:w-1/2 flex justify-end items-end pb-20">
-                <div className="max-w-[520px] w-full invisible"></div>
+                <div className=" w-full invisible"></div>
               </div>
             </div>
           </div>
@@ -122,7 +209,20 @@ const ContactPage = () => {
                   <h2 className="text-[#000000] text-[24px] font-semibold leading-[100%] text-center">
                     Ready To Chat
                   </h2>
-                  <div className="mt-8 space-y-5">
+
+                  {submitMessage && (
+                    <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-[14px]">
+                      {submitMessage}
+                    </div>
+                  )}
+
+                  {submitError && (
+                    <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-[14px]">
+                      {submitError}
+                    </div>
+                  )}
+
+                  <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div>
                         <label
@@ -135,8 +235,17 @@ const ContactPage = () => {
                           id="name"
                           type="text"
                           placeholder="John"
-                          className="w-full px-2 py-2 border border-[#EBEBEB] rounded-lg text-[12px] text-[#000] placeholder-[#0000008A] bg-white outline-none"
+                          value={formData.name}
+                          onChange={handleChange}
+                          className={`w-full px-2 py-2 border rounded-lg text-[12px] text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+                            errors.name ? "border-red-500" : "border-[#EBEBEB]"
+                          }`}
                         />
+                        {errors.name && (
+                          <p className="text-red-500 text-[12px] mt-1">
+                            {errors.name}
+                          </p>
+                        )}
                       </div>
                       <div>
                         <label
@@ -149,8 +258,17 @@ const ContactPage = () => {
                           id="email"
                           type="email"
                           placeholder="John@gmail.com"
-                          className="w-full px-2 py-2 border border-[#EBEBEB] rounded-lg text-[12px] text-[#000] placeholder-[#0000008A] bg-white outline-none"
+                          value={formData.email}
+                          onChange={handleChange}
+                          className={`w-full px-2 py-2 border rounded-lg text-[12px] text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+                            errors.email ? "border-red-500" : "border-[#EBEBEB]"
+                          }`}
                         />
+                        {errors.email && (
+                          <p className="text-red-500 text-[12px] mt-1">
+                            {errors.email}
+                          </p>
+                        )}
                       </div>
                     </div>
                     <div>
@@ -164,8 +282,17 @@ const ContactPage = () => {
                         id="subject"
                         type="text"
                         placeholder="Your main Object"
-                        className="w-full px-2 py-2 border border-[#EBEBEB] rounded-lg text-[12px] text-[#000] placeholder-[#0000008A] bg-white outline-none"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        className={`w-full px-2 py-2 border rounded-lg text-[12px] text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+                          errors.subject ? "border-red-500" : "border-[#EBEBEB]"
+                        }`}
                       />
+                      {errors.subject && (
+                        <p className="text-red-500 text-[12px] mt-1">
+                          {errors.subject}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <label
@@ -177,20 +304,30 @@ const ContactPage = () => {
                       <textarea
                         id="message"
                         placeholder="Write your message here.."
-                        className="w-full px-2 py-2 h-[120px] border border-[#EBEBEB] rounded-lg text-[12px] text-[#000] placeholder-[#0000008A] bg-white resize-none outline-none"
+                        value={formData.message}
+                        onChange={handleChange}
+                        className={`w-full px-2 py-2 h-[120px] border rounded-lg text-[12px] text-[#000] placeholder-[#0000008A] bg-white resize-none outline-none transition ${
+                          errors.message ? "border-red-500" : "border-[#EBEBEB]"
+                        }`}
                       />
+                      {errors.message && (
+                        <p className="text-red-500 text-[12px] mt-1">
+                          {errors.message}
+                        </p>
+                      )}
                     </div>
                     <button
-                      type="button"
-                      className="w-full py-4 bg-[#FE9C00] text-white text-[16px] rounded-lg cursor-pointer hover:opacity-90 transition"
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-4 bg-[#FE9C00] text-white text-[16px] rounded-lg cursor-pointer hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Submit
+                      {isSubmitting ? "Submitting..." : "Submit"}
                     </button>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
-            <div className="max-w-[1200px] mx-auto px-8 py-20 -mt-40">
+            <div className="max-w-[1200px] mx-auto -mt-80 ">
               <div className="flex justify-end">
                 <div
                   className="max-w-[520px] w-full px-8 py-10 rounded-3xl"

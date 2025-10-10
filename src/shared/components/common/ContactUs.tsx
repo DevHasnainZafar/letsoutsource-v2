@@ -1,8 +1,95 @@
 "use client";
-import React from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import Image from "next/image";
+import { validateContactForm } from "@/core/utils/validations";
 
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
 const ContactUs = () => {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitMessage, setSubmitMessage] = useState<string>("");
+  const [submitError, setSubmitError] = useState<string>("");
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+    if (errors[id as keyof FormErrors]) {
+      setErrors((prev) => ({
+        ...prev,
+        [id]: "",
+      }));
+    }
+  };
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitMessage("");
+    setSubmitError("");
+    const { isValid, errors: validationErrors } = validateContactForm(formData);
+
+    if (!isValid) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitMessage(
+          "Email sent successfully! We'll get back to you soon."
+        );
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setErrors({});
+      } else {
+        setSubmitError(
+          data.message || "Failed to send email. Please try again."
+        );
+      }
+    } catch (error) {
+      setSubmitError("An error occurred. Please try again later.");
+      console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="relative bg-white max-w-[1200px] mx-auto  px-4 text-center py-28">
       <p className="text-[#000000B8] font-medium text-[14px] leading-6 font-sora">
@@ -38,7 +125,20 @@ const ContactUs = () => {
           Exceptional customer care to boost satisfaction and enhance long-term
           customer loyalty.
         </p>
-        <form className="mt-8 space-y-5 text-left">
+
+        {submitMessage && (
+          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-[14px] font-sora">
+            {submitMessage}
+          </div>
+        )}
+
+        {submitError && (
+          <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-[14px] font-sora">
+            {submitError}
+          </div>
+        )}
+
+        <form className="mt-8 space-y-5 text-left" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div>
               <label
@@ -51,8 +151,17 @@ const ContactUs = () => {
                 id="name"
                 type="text"
                 placeholder="John"
-                className="w-full h-10.5 px-2 py-2 border border-[#EBEBEB] rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none"
+                value={formData.name}
+                onChange={handleChange}
+                className={`w-full h-10.5 px-2 py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+                  errors.name ? "border-red-500" : "border-[#EBEBEB]"
+                }`}
               />
+              {errors.name && (
+                <p className="text-red-500 text-[12px] font-sora mt-1">
+                  {errors.name}
+                </p>
+              )}
             </div>
             <div>
               <label
@@ -65,8 +174,17 @@ const ContactUs = () => {
                 id="email"
                 type="email"
                 placeholder="John@gmail.com"
-                className="w-full h-10.5 px-2 py-2 border border-[#EBEBEB] rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none"
+                value={formData.email}
+                onChange={handleChange}
+                className={`w-full h-10.5 px-2 py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+                  errors.email ? "border-red-500" : "border-[#EBEBEB]"
+                }`}
               />
+              {errors.email && (
+                <p className="text-red-500 text-[12px] font-sora mt-1">
+                  {errors.email}
+                </p>
+              )}
             </div>
           </div>
           <div>
@@ -80,8 +198,17 @@ const ContactUs = () => {
               id="subject"
               type="text"
               placeholder="Your main Object"
-              className="w-full h-10.5 px-2 py-2 border border-[#EBEBEB] rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none"
+              value={formData.subject}
+              onChange={handleChange}
+              className={`w-full h-10.5 px-2 py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+                errors.subject ? "border-red-500" : "border-[#EBEBEB]"
+              }`}
             />
+            {errors.subject && (
+              <p className="text-red-500 text-[12px] font-sora mt-1">
+                {errors.subject}
+              </p>
+            )}
           </div>
           <div>
             <label
@@ -93,14 +220,24 @@ const ContactUs = () => {
             <textarea
               id="message"
               placeholder="Write your message here.."
-              className="w-full px-2 py-2 h-[120px] border border-[#EBEBEB] rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white resize-none outline-none"
+              value={formData.message}
+              onChange={handleChange}
+              className={`w-full px-2 py-2 h-[120px] border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white resize-none outline-none transition ${
+                errors.message ? "border-red-500" : "border-[#EBEBEB]"
+              }`}
             />
+            {errors.message && (
+              <p className="text-red-500 text-[12px] font-sora mt-1">
+                {errors.message}
+              </p>
+            )}
           </div>
           <button
             type="submit"
-            className="w-full py-4 bg-[#FE9C00] text-white text-[16px] font-sora rounded-lg cursor-pointer hover:opacity-90 transition"
+            disabled={isSubmitting}
+            className="w-full py-4 bg-[#FE9C00] text-white text-[16px] font-sora rounded-lg cursor-pointer hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Submit
+            {isSubmitting ? "Submitting..." : "Submit"}
           </button>
         </form>
       </div>

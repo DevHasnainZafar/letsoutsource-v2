@@ -17,7 +17,8 @@ export async function POST(req) {
   // Email options
   const mailOptions = {
     from: `"${name}" <support@letsoutsource.co.uk>`,
-    to: "jsher@letsoutsource.co.uk",
+    // to: "jsher@letsoutsource.co.uk",
+    to: "signatureartist90@gmail.com",
     subject,
     replyTo: email,
     html: `
