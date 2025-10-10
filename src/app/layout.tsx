@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/shared/layout/navbar/Navbar";
 import Footer from "@/shared/layout/footer/Footer";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Let's OutSource",
@@ -47,6 +48,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-41ZEG74992"
+          strategy="afterInteractive"
+          async
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-41ZEG74992');
+          `}
+        </Script>
+      </head>
       <body>
         <Navbar />
         {children}

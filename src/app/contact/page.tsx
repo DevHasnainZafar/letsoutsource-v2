@@ -15,7 +15,6 @@ interface FormErrors {
   subject?: string;
   message?: string;
 }
-
 const ContactPage = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const images: string[] = ["/hero1.png", "/hero2.png", "/hero3.png"];
