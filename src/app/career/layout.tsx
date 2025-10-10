@@ -10,7 +10,6 @@ export default function CareerLayout({
     <>
       <CareerNavbar />
       {children}
-      <Footer />
     </>
   );
 }

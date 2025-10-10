@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 const CareerNavbar = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navLinks = [
@@ -17,10 +18,16 @@ const CareerNavbar = () => {
     { name: "Home", path: "/" },
   ];
 
+  const dropdownLinks = [
+    { name: "Taxi Booking Services", path: "/taxiService" },
+    { name: "Outsourcing Services", path: "/outsourcingService" },
+    { name: "Customer Support", path: "/customerSupport" },
+    { name: "Email Support Services", path: "/emailSupport" },
+    { name: "Live Chat Support", path: "/liveSupport" },
+  ];
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -39,6 +46,8 @@ const CareerNavbar = () => {
           width={100}
           className="mt-4"
         />
+
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className="md:hidden flex flex-col space-y-1.5 z-20"
@@ -47,36 +56,75 @@ const CareerNavbar = () => {
           <span className="w-6 h-[2px] bg-black"></span>
           <span className="w-6 h-[2px] bg-black"></span>
         </button>
-        <div className="hidden md:flex gap-12">
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex gap-12 relative">
           {navLinks.map((link) =>
             link.hasDropdown ? (
-              <div
-                key={link.name}
-                className="flex gap-[14px] items-center cursor-pointer"
-              >
-                <Link
-                  href={link.path}
-                  className={`font-sora font-normal text-lg text-black pb-3 translate-y-[16px] border-b-4 ${
-                    pathname === link.path
-                      ? "border-black"
-                      : "border-transparent"
-                  }`}
+              <div key={link.name} className="relative">
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="flex gap-[14px] items-center cursor-pointer"
                 >
-                  {link.name}
-                </Link>
-                <Image
-                  src="/arrowdownblack.png"
-                  alt="dropdown"
-                  height={20}
-                  width={20}
-                  className="w-[10px] h-[10px] mt-4"
-                />
+                  <span
+                    className={`font-sora font-normal text-lg text-black pb-3 translate-y-[16px] border-b-4 ${
+                      pathname === link.path
+                        ? "border-black"
+                        : "border-transparent"
+                    }`}
+                  >
+                    {link.name}
+                  </span>
+                  <Image
+                    src="/arrowdownblack.png"
+                    alt="dropdown"
+                    height={10}
+                    width={10}
+                    className={`w-[10px] h-[10px] mt-4 transition-transform duration-300 ${
+                      dropdownOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {/* Dropdown */}
+                {dropdownOpen && (
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-9 w-max z-50">
+                    <div className="flex justify-center mb-0">
+                      <div
+                        className="w-4 h-3 border-l-[8px] border-r-[8px] border-b-[10px] border-l-transparent border-r-transparent border-b-white"
+                        style={{
+                          filter: "drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.2))",
+                        }}
+                      ></div>
+                    </div>
+
+                    <div
+                      className="rounded-2xl overflow-hidden border border-black/10 backdrop-blur-[40px]"
+                      style={{
+                        background: "rgba(255, 255, 255, 0.9)",
+                        boxShadow: "0px 20px 24px 0px #0000001A",
+                        borderRadius: "16px",
+                      }}
+                    >
+                      {dropdownLinks.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.path}
+                          className="block px-8 py-6 text-black font-sora font-normal text-[16px] leading-none transition-colors duration-200 hover:bg-[#FE9C00] hover:text-white"
+                          onClick={() => setDropdownOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <Link
                 key={link.name}
                 href={link.path}
-                className={`font-sora font-normal text-lg text-black pb-3 translate-y-[19px] border-b-6 ${
+                className={`font-sora font-normal text-lg text-black pb-3 translate-y-[18px] border-b-6 ${
                   pathname === link.path ? "border-black" : "border-transparent"
                 }`}
               >
@@ -86,6 +134,7 @@ const CareerNavbar = () => {
           )}
         </div>
 
+        {/* Mobile Menu */}
         {menuOpen && (
           <div
             className="absolute top-22 left-0 w-full bg-[#0000000A] backdrop-blur-sm flex flex-col items-center space-y-6 py-6 md:hidden z-10 border border-transparent"

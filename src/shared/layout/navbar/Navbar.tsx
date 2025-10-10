@@ -3,12 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-
 const Navbar = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
   const navLinks = [
     { name: "Career", path: "/career" },
     { name: "About", path: "/about" },
@@ -16,27 +15,27 @@ const Navbar = () => {
     { name: "Service", path: "/service", hasDropdown: true },
     { name: "Home", path: "/" },
   ];
-
+  const dropdownLinks = [
+    { name: "Taxi Booking Services", path: "/taxiService" },
+    { name: "Outsourcing Services", path: "/outsourcingService" },
+    { name: "Customer Support", path: "/customerSupport" },
+    { name: "Email Support Services", path: "/emailSupport" },
+    { name: "Live Chat Support", path: "/liveSupport" },
+  ];
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
   return (
     <nav
       className={`fixed top-0 left-0 right-0 w-full max-w-[1200px] mx-auto z-50 border-b-[1.5px] border-[#FFFFFF52] pt-6 pb-4 transition-all duration-300 ${
         isScrolled ? "bg-black/10 backdrop-blur-md" : "bg-transparent"
       }`}
     >
-      <div className=" px-2 md:px-0 flex justify-between items-center">
+      <div className="px-2 md:px-0 flex justify-between items-center">
         <Image
           src="/whitelogo.png"
           alt="letsoutsource"
@@ -52,30 +51,64 @@ const Navbar = () => {
           <span className="w-6 h-[2px] bg-white"></span>
           <span className="w-6 h-[2px] bg-white"></span>
         </button>
-        <div className="hidden md:flex gap-12">
+        <div className="hidden md:flex gap-12 relative">
           {navLinks.map((link) =>
             link.hasDropdown ? (
-              <div
-                key={link.name}
-                className="flex gap-[14px] items-center cursor-pointer"
-              >
-                <Link
-                  href={link.path}
-                  className={`font-sora font-normal text-lg text-white pb-3 translate-y-[16px] border-b-4 ${
-                    pathname === link.path
-                      ? "border-white"
-                      : "border-transparent"
-                  }`}
+              <div key={link.name} className="relative">
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="flex gap-[14px] items-center cursor-pointer"
                 >
-                  {link.name}
-                </Link>
-                <Image
-                  src="/arrowdown.png"
-                  alt="dropdown"
-                  height={10}
-                  width={10}
-                  className="w-[10px] h-[10px] mt-4"
-                />
+                  <span
+                    className={`font-sora font-normal text-lg text-white pb-3 translate-y-[16px] border-b-4 ${
+                      pathname === link.path
+                        ? "border-white"
+                        : "border-transparent"
+                    }`}
+                  >
+                    {link.name}
+                  </span>
+                  <Image
+                    src="/arrowdown.png"
+                    alt="dropdown"
+                    height={10}
+                    width={10}
+                    className={`w-[10px] h-[10px] mt-4 transition-transform duration-300 ${
+                      dropdownOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {dropdownOpen && (
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-9 w-max z-50">
+                    <div className="flex justify-center mb-0">
+                      <div
+                        className="w-4 h-3 border-l-[8px] border-r-[8px] border-b-[10px] border-l-transparent border-r-transparent border-b-white"
+                        style={{
+                          filter: "drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.3))",
+                        }}
+                      ></div>
+                    </div>
+                    <div
+                      className="rounded-2xl overflow-hidden border border-white/20 backdrop-blur-[40px]"
+                      style={{
+                        background: "#0000003D",
+                        boxShadow: "0px 20px 24px 0px #0000008C",
+                        borderRadius: "16px",
+                      }}
+                    >
+                      {dropdownLinks.map((item) => (
+                        <Link
+                          key={item.name}
+                          href={item.path}
+                          className="block px-8 py-6 text-white font-sora font-normal text-[16px] leading-none transition-colors duration-200 hover:bg-[#FE9C00]"
+                          onClick={() => setDropdownOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <Link
