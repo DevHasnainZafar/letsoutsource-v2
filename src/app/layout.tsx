@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/shared/layout/navbar/Navbar";
 import Footer from "@/shared/layout/footer/Footer";
 import Script from "next/script";
+import WhatsAppButton from "@/shared/components/whatsappButton/WhatsAppButton";
 
 export const metadata: Metadata = {
   title: "Let's OutSource",
@@ -62,6 +63,7 @@ export default function RootLayout({
       </head>
       <body>
         <Navbar />
+        <WhatsAppButton />
         {children}
         <Footer />
       </body>

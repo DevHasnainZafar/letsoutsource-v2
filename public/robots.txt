@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://letsoutsource.co.uk/
+
+# Sitemaps
+Sitemap: https://letsoutsource.co.uk/sitemap.xml

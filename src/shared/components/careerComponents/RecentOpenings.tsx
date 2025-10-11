@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-
 const RecentOpenings = () => {
   const jobs = [
     {
@@ -20,6 +20,11 @@ const RecentOpenings = () => {
     },
   ];
 
+  const handleApply = (jobTitle: any, location: any) => {
+    const message = `Hello! I'm interested in applying for the ${jobTitle} position in ${location}. Could you please provide more details about the application process?`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/441623396943?text=${encodedMessage}`, "_blank");
+  };
   return (
     <div className="max-w-[1200px] mx-auto text-center py-20">
       <p className="text-[#000000B8] font-medium text-[16px] leading-[24px] uppercase">
@@ -60,7 +65,10 @@ const RecentOpenings = () => {
               <div className="bg-[#FE9C0029] border border-[#FE9C0070] text-[#000000] rounded-[32px] px-4 py-2 text-sm font-medium">
                 {job.positions}
               </div>
-              <button className="bg-[#FE9C00] text-black text-sm font-medium rounded-[8px] px-4 py-2 hover:opacity-90 transition">
+              <button
+                onClick={() => handleApply(job.title, job.location)}
+                className="bg-[#FE9C00] text-black text-sm font-medium rounded-[8px] px-4 py-2 hover:opacity-90 transition"
+              >
                 Apply
               </button>
             </div>
@@ -70,5 +78,4 @@ const RecentOpenings = () => {
     </div>
   );
 };
-
 export default RecentOpenings;
