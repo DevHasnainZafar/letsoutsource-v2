@@ -12,10 +12,10 @@ const Livesupport = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[90vh] md:h-[750px] overflow-hidden flex flex-col">
+    <div className="relative w-full h-[50vh] md:h-[750px] overflow-hidden flex flex-col">
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/workingman.png"
+          src="/workingman.avif"
           alt="letsoutsource hero"
           fill
           priority
@@ -23,7 +23,7 @@ const Livesupport = () => {
         />
       </div>
       <div className="absolute inset-0 bg-black/70 -z-10" />
-      <div className="flex flex-col justify-center items-center flex-1 text-center text-white px-4">
+      <div className="flex flex-col justify-center items-center flex-1 text-center text-white px-4 mt-16 sm:mt-0">
         <h3 className="text-[#FFFFFFB8] font-medium text-[20px] leading-[24px] mb-4">
           Service
         </h3>

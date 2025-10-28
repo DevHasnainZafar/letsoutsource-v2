@@ -6,7 +6,8 @@ import Script from "next/script";
 import WhatsAppButton from "@/shared/components/whatsappButton/WhatsAppButton";
 
 export const metadata: Metadata = {
-  title: "Let's OutSource",
+  title:
+    "Let's OutSource | Taxi Booking & Dispatch Outsourcing | iCabbi, Autocab, Cab9, Cordic Experts | ",
   icons: { icon: "/Letoutsource-favicon.ico" },
   keywords: [
     "customer support outsourcing",
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     "appointment booking call center",
   ],
   description:
-    "Let’s Outsource specialized in outsourced call center services to different businesses around the world. We are specialized in booking and dispatch services and are fully trained on all dispatch softwares",
+    "24/7 UK-focused taxi booking, dispatching, and complaints handling by neutral-accent operators fluent in English with expertise in iCabbi, Autocab, Cordic, CabTreasure & Cab9. Plus appointment scheduling, call handling, legal support, medical billing, and remote staffing. Trusted by 45+ taxi firms across the UK & USA.",
 };
 export default function RootLayout({
   children,
@@ -47,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/Letoutsource-favicon.ico" type="image/x-icon" />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-41ZEG74992"
           strategy="afterInteractive"

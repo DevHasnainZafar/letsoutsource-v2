@@ -1,6 +1,6 @@
 const TermsAndConditionsPage = () => {
   return (
-    <div className="min-h-screen flex justify-center items-center px-8 py-5 lg:px-0 lg:py-0">
+    <div className="min-h-screen flex justify-center items-center px-8 py-5 lg:px-0 lg:py-0 mt-20">
       <div className="bg-white shadow-2xl rounded-lg max-w-[1200px] w-full mx-auto my-8 overflow-hidden">
         <header className="bg-gradient-to-r from-[#ff7e36] to-[#ffba4e] text-[#1a1f2f] p-8">
           <h1 className="text-4xl font-bold m-0">Terms and Conditions</h1>

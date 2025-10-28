@@ -29,8 +29,8 @@ const AboutPage = () => {
       <AboutCards />
       <div className="relative">
         <PartnersLogos />
-        <div className="w-full h-[400px] bg-black"></div>
-        <div className="absolute -bottom-15 left-0 w-full">
+        <div className="w-full h-[300px] bg-black hidden sm:block "></div>
+        <div className="absolute sm:-bottom-15 left-0 w-full ">
           <PerfectPartnerBanner />
         </div>
       </div>

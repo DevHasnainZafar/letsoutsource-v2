@@ -1,23 +1,26 @@
-"use client";
 import React from "react";
 import Image from "next/image";
-
 const PartnersLogos = () => {
   const logos = [
+    "/icabbi.png",
+    "/Breezecars.png",
     "/albatross.webp",
+    "/uridowhite.webp",
+    "/Booking.png",
+    // "/exelcars.png",
     "/novatech.png",
+    "/angelscars.png",
+    "/A1taxi.png",
+    "/asbcars.png",
+    "/DaddyCabs.webp",
     "/skullview.png",
     "/khanujalaw.png",
-    "/DaddyCabs.webp",
-    "/uridowhite.webp",
     "/cmac.webp",
     "/Saltire.webp",
-    "/Booking.webp",
     "/jstelecomlogowhite.png",
   ];
-
   return (
-    <section className="relative bg-black text-center py-20 overflow-hidden h-screen">
+    <section className="relative bg-black text-center py- overflow-hidden h-screen">
       <div className="absolute inset-0 flex items-center justify-center">
         <Image
           src="/map.png"
@@ -32,11 +35,10 @@ const PartnersLogos = () => {
         <p className="text-[#FFFFFFB8] font-sora font-medium text-[14px] leading-6">
           WHO WE ARE
         </p>
-        <h2 className="text-white font-sora font-semibold text-[42px] leading-[100%] mt-2">
+        <h2 className="text-white font-sora font-semibold text-[28px] sm:text-[32px] md:text-[42px] leading-[110%] mt-2">
           Meet Our Partners
         </h2>
-
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-18 justify-items-center">
+        <div className="mt-8 sm:mt-10 md:mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-18 justify-items-center">
           {logos.map((logo, index) => (
             <div
               key={index}
@@ -56,5 +58,4 @@ const PartnersLogos = () => {
     </section>
   );
 };
-
 export default PartnersLogos;

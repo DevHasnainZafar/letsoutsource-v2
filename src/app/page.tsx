@@ -68,7 +68,7 @@ export default function Home() {
       <ContactUs />
       <div className="relative">
         <HomeTestimonials />
-        <div className="absolute -bottom-15 left-0 w-full">
+        <div className="absolute bottom-0 sm:-bottom-15 left-0 w-full">
           <PerfectPartnerBanner />
         </div>
       </div>

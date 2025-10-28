@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "dev": "next dev",
+    "build": "next build",
     "postbuild": "next-sitemap",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
-    "gsap": "^3.13.0",
+    "compression": "^1.8.1",
     "next": "15.5.4",
     "next-sitemap": "^4.2.3",
     "nodemailer": "^7.0.6",

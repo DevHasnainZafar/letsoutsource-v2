@@ -1,0 +1,71 @@
+# ============================================================
+# 🚀 PERFORMANCE-OPTIMIZED .htaccess for Next.js (Namecheap)
+# ============================================================
+
+# --- CloudLinux Passenger Configuration (keep this unchanged) ---
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/jsteleco/repositories/LetOutSource"
+PassengerBaseURI "/"
+PassengerNodejs "/home/jsteleco/nodevenv/repositories/LetOutSource/22/bin/node"
+PassengerAppType node
+PassengerStartupFile server.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+
+
+# ============================================================
+# ⚙️ PERFORMANCE OPTIMIZATION RULES
+# ============================================================
+
+# ✅ Enable GZIP compression for text-based files
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  Header append Vary User-Agent
+</IfModule>
+
+# ✅ Leverage browser caching for static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+</IfModule>
+
+# ✅ Add Cache-Control headers for static files
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|png|jpg|jpeg|gif|webp|avif|svg|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# ✅ Enable Keep-Alive for faster parallel requests
+<IfModule mod_headers.c>
+  Header set Connection keep-alive
+</IfModule>
+
+# ✅ Force HTTPS (optional — uncomment if SSL is active)
+# RewriteEngine On
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ✅ Next.js route fallback (for client-side routing)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.js [QSA,L]
+</IfModule>
+
+# ============================================================
+# ✅ END OF OPTIMIZATION RULES
+# ============================================================

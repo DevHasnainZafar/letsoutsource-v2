@@ -7,7 +7,7 @@ const HeroSection = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const [flipStates, setFlipStates] = useState<number[]>([]);
 
-  const images = ["/hero1.png", "/hero2.png", "/hero3.png"];
+  const images = ["/hero1.avif", "/hero2.avif", "/hero3.avif"];
 
   const stats = [
     {
@@ -17,7 +17,7 @@ const HeroSection = () => {
       suffix: "+",
     },
     {
-      value: "62",
+      value: "84",
       label: "Clients",
       icon: "/circlearrowright.png",
       suffix: "+",
@@ -29,21 +29,24 @@ const HeroSection = () => {
       suffix: "/7",
     },
     {
-      value: "130",
+      value: "210",
       label: "Agents",
       icon: "/circlearrowright.png",
       suffix: "+",
     },
   ];
+
   useEffect(() => {
     setFlipStates(Array(stats.length).fill(0));
   }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 5000);
     return () => clearInterval(interval);
   }, [images.length]);
+
   useEffect(() => {
     const flipRandomStat = () => {
       const index = Math.floor(Math.random() * stats.length);
@@ -138,7 +141,7 @@ const HeroSection = () => {
           display: inline-block;
         }
       `}</style>
-      <div className="relative w-full h-[90vh] md:h-[800px] overflow-hidden flex flex-col">
+      <div className="relative w-full h-[50vh] sm:h-[85vh] md:h-[800px] overflow-hidden flex flex-col">
         {images.map((img, index) => (
           <div
             key={img}
@@ -154,42 +157,46 @@ const HeroSection = () => {
                 index === currentImage ? getImageAnimation(index) : ""
               }`}
               priority={index === 0}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 1200px"
             />
           </div>
         ))}
         <div className="absolute inset-0 bg-black/75 -z-10" />
-        <div className="flex flex-col justify-between flex-1 text-white text-center">
-          <div className="flex flex-col items-center justify-center flex-1 space-y-4 px-4">
-            <h1 className="font-sora font-semibold text-[36px] md:text-[46px] leading-[46px] md:leading-[56px] tracking-[-1.28px]">
-              Perfect Outsourcing <br />
+        <div className="flex flex-col justify-between flex-1 text-white text-center px-2 sm:px-0 mt-20 sm:mt-0 md:mt-0">
+
+          <div className="flex flex-col items-center justify-center flex-1 space-y-3 sm:space-y-4">
+            <h1 className="font-sora font-semibold text-[28px] sm:text-[36px] md:text-[46px] leading-[38px] sm:leading-[46px] md:leading-[56px] tracking-[-1.28px]">
+              Perfect Outsourcing <br className="block sm:hidden" />
               Partner
             </h1>
-            <p className="max-w-[390px] text-[#FFFFFFA8] text-[14px] md:text-[16px] leading-[24px] md:leading-[28px] font-normal">
+            <p className="max-w-[90%] sm:max-w-[390px] text-[#FFFFFFA8] text-[13px] sm:text-[14px] md:text-[16px] leading-[22px] sm:leading-[24px] md:leading-[28px] font-normal">
               Since 2019, Let's Outsource has been providing tailored
               outsourcing solutions, from taxi booking and remote staff hiring
               to reliable customer support.
             </p>
             <Link
               href="/contact"
-              className="cursor-pointer border-[1.5px] border-white rounded-[233px] px-4 py-2 flex items-center justify-center gap-2 mx-auto hover:bg-[#d7d7d7f4] hover:text-black transition-all duration-300"
+              className="cursor-pointer border-[1.5px] border-white rounded-[233px] px-3 sm:px-4 py-1.5 sm:py-2 flex items-center justify-center gap-2 mx-auto hover:bg-[#d7d7d7f4] hover:text-black transition-all duration-300"
             >
               Request a Quote
               <Image
                 src="/arrowrightorange.png"
                 alt="arrow"
-                width={30}
-                height={30}
-                className="object-contain"
+                width={24}
+                height={24}
+                className="object-contain w-5 sm:w-6 h-5 sm:h-6 md:w-[30px] md:h-[30px]"
+                sizes="(max-width: 640px) 5vw, 30px"
               />
             </Link>
           </div>
-          <div className="flex text-white text-center justify-center items-center gap-6 md:gap-16 lg:gap-20 pb-16 px-4">
+
+          <div className="flex flex-wrap text-white text-center justify-center items-center gap-4 sm:gap-8 md:gap-16 lg:gap-20 pb-8 sm:pb-12 md:pb-16">
             {stats.map((item, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center justify-center space-y-2"
+                className="flex flex-col items-center justify-center space-y-1 sm:space-y-2"
               >
-                <h1 className="font-sora font-semibold text-[28px] md:text-[48px] leading-[38px] md:leading-[52px] tracking-[-1.28px]">
+                <h1 className="font-sora font-semibold text-[24px] sm:text-[32px] md:text-[48px] leading-[32px] sm:leading-[38px] md:leading-[52px] tracking-[-1.28px]">
                   {item.value.split("").map((digit, dIndex) => (
                     <span
                       key={`${digit}-${flipStates[index]}-${dIndex}`}
@@ -202,20 +209,23 @@ const HeroSection = () => {
                   ))}
                   {item.suffix}
                 </h1>
-
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1 sm:gap-2">
                   <Image
                     src={item.icon}
                     alt={item.label}
-                    width={20}
-                    height={20}
-                    className="object-contain w-4 h-4 md:w-5 md:h-5"
+                    width={16}
+                    height={16}
+                    className="object-contain w-3 sm:w-4 md:w-5 h-3 sm:h-4 md:h-5"
+                    sizes="(max-width: 640px) 3vw, 20px"
                   />
-                  <p className="text-[13px] md:text-[18px]">{item.label}</p>
+                  <p className="text-[12px] sm:text-[14px] md:text-[18px]">
+                    {item.label}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </>

@@ -1,27 +1,26 @@
 "use client";
 import React from "react";
 import PerfectPartnerBanner from "./PerfectPartnerBanner";
+import Image from "next/image";
+
 const comments = [
   {
-    name: "James Walker",
-    role: "Operations Manager, London",
-    avatar:
-      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?crop=faces&fit=crop&w=200&h=200",
-    text: "Let’sOutsource has completely transformed how our drivers handle bookings.",
+    name: "Simon Stiff",
+    role: "Fleet Owner, Cambridgeshire",
+    avatar: "/simon.png",
+    text: "We rely on Lets Outsource to manage our taxi-booking support, and they’ve been exceptional. Their staff are well-trained, friendly, and always go the extra mile for our passengers. They now handle our operations 24/7 now.",
   },
   {
-    name: "Amelia Green",
-    role: "Customer Support Lead, LetsOutsource UK",
-    avatar:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=faces&fit=crop&w=200&h=200",
-    text: "I’ve recommended Let’sOutsource to several of my clients, and every single one of them has seen a major improvement in customer service efficiency. Their adaptability and understanding of business processes stand out. They don’t just provide support — they truly partner with you to understand your operations and improve them.",
+    name: "Zia",
+    role: "Director, uRido Taxis",
+    avatar: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+    text: "We moved our taxi booking, dispatch and operation handling to Lets Outsource and haven’t looked back. The team is professional, responsive and available anytime we request for covers and our drivers and passengers notice the difference.",
   },
   {
-    name: "Oliver Hughes",
-    role: "Operations Manager, UKRide",
-    avatar:
-      "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?crop=faces&fit=crop&w=200&h=200",
-    text: "We handle hundreds of rides daily, and managing them used to be stressful.",
+    name: "Rob",
+    role: "Director Saltire Private Hire",
+    avatar: "https://cdn-icons-png.flaticon.com/512/847/847969.png",
+    text: "From iCabbi allocations to after-hours coverage, Lets Outsource delivers reliably every day. Clear communication, fast turnarounds and true 24/7 support. I would highly recommend.",
   },
   {
     name: "Sophie Turner",
@@ -35,7 +34,7 @@ const comments = [
     role: "Director, CallServe Ltd.",
     avatar:
       "https://images.unsplash.com/photo-1527980965255-d3b416303d12?crop=faces&fit=crop&w=200&h=200",
-    text: "Their  support helped us reduce call waiting times by over 60%. What impressed me most is they treat our customers as their own. ",
+    text: "Their support helped us reduce call waiting times by over 60%. What impressed me most is they treat our customers as their own.",
   },
   {
     name: "Ella Morgan",
@@ -52,8 +51,8 @@ const comments = [
     text: "Handling live calls and chats used to feel overwhelming. Now it’s smooth and well-organized. The system tracks everything we need, and the response time has improved drastically.",
   },
   {
-    name: "Charlotte Bennett",
-    role: "Taxi Owner, BristolCabs",
+    name: "James Turner",
+    role: "Owner, CityLine Cars",
     avatar:
       "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?crop=faces&fit=crop&w=200&h=200",
     text: "We’ve used multiple booking solutions before, but none came close to the reliability and simplicity of Let’sOutsource.",
@@ -67,18 +66,17 @@ const comments = [
   },
   {
     name: "Sophie Evans",
-    role: "Customer Experience Lead, Manchester",
+    role: "Customer Lead, Manchester",
     avatar:
       "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?crop=faces&fit=crop&w=200&h=200",
     text: "The live support team at Letsoutsource has transformed our client communication. Our customers in Manchester love how quickly their issues are resolved — it's top-notch service.",
   },
-
   {
     name: "Grace Foster",
-    role: "Head of Support,UK",
+    role: "Head of Support, UK",
     avatar:
       "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&crop=faces&fit=crop&w=200&h=200",
-    text: "Live chat, email, and call assistance — all handled effortlessly in one place. Our support communication is smoother, and team response times are faster. ",
+    text: "Live chat, email, and call assistance — all handled effortlessly in one place. Our support communication is smoother, and team response times are faster.",
   },
   {
     name: "Thomas Davies",
@@ -97,19 +95,50 @@ const UserComments = () => {
   const columns = [col1, col2, col3, col4];
 
   return (
-    <section className="relative w-full pt-24 pb-80 bg-white">
-      <div className="max-w-[1200px] mx-auto px-4">
+    <section className="relative w-full sm:pt-24 pt-10 pb-80 sm:pb-80 bg-white">
+      <div className="max-w-[1200px] mx-auto px-2 sm:px-0">
         <p className="font-poppins font-medium text-[16px] leading-[24px] text-center text-[#000000B8] mb-2 uppercase">
           Testimonial
         </p>
-        <h2 className="font-sora font-semibold text-[44px] leading-[100%] text-center text-[#000000] mb-3">
+        <h2 className="font-sora font-semibold text-[30px] sm:text-[44px] leading-[100%] text-center text-[#000000] mb-3">
           Here's what our users are <br /> chatting about!
         </h2>
-        <p className="text-center text-[16px] leading-[27px] text-[#0000008A] max-w-[590px] mx-auto mb-16">
+        <p className="text-center text-[14px] sm:text-[16px] leading-[27px] text-[#0000008A] max-w-[590px] mx-auto sm:mb-16 mb-10">
           See real experiences and feedback from UK customers and business
           partners as they share how Let’sOutsource supports their daily
           operations and communication.
         </p>
+        <div className="lg:hidden flex flex-col gap-6 mt-0 sm:mt-10">
+          {comments.slice(0, 5).map((item, index) => (
+            <div
+              key={index}
+              className="border border-[#E5E7EB99] rounded-xl p-5 flex flex-col gap-4 bg-white shadow-sm hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+            >
+              <div className="flex items-center gap-3">
+                <div className="relative w-10 h-10 rounded-full overflow-hidden">
+                  <Image
+                    width={500}
+                    height={500}
+                    src={item.avatar}
+                    alt={item.name}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <div>
+                  <p className="font-sora text-[14px] leading-[21px] text-[#000000]">
+                    {item.name}
+                  </p>
+                  <p className="font-sora text-[13px] leading-[20px] text-[#0000008A]">
+                    {item.role}
+                  </p>
+                </div>
+              </div>
+              <p className="font-sora text-[14px] leading-[22px] text-[#000000A3]">
+                {item.text}
+              </p>
+            </div>
+          ))}
+        </div>
         <div className="hidden lg:grid grid-cols-4 gap-6 items-start mt-20">
           {columns.map((col, i) => (
             <div
@@ -125,7 +154,9 @@ const UserComments = () => {
                 >
                   <div className="flex items-center gap-3">
                     <div className="relative w-10 h-10 rounded-full overflow-hidden">
-                      <img
+                      <Image
+                        width={500}
+                        height={500}
                         src={item.avatar}
                         alt={item.name}
                         className="object-cover w-full h-full"
@@ -149,7 +180,7 @@ const UserComments = () => {
           ))}
         </div>
       </div>
-      <div className="absolute left-0 right-0 -bottom-20">
+      <div className="absolute left-0 right-0 sm:-bottom-20 bottom-0">
         <PerfectPartnerBanner />
       </div>
     </section>

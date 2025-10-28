@@ -1,18 +1,16 @@
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen  flex justify-center items-center px-8 py-5 lg:px-0 lg:py-0">
+    <div className="min-h-screen  flex justify-center items-center px-8 py-5 lg:px-0 lg:py-0 mt-20">
       <div className="bg-white shadow-2xl rounded-lg max-w-[1200px] w-full mx-auto my-8 overflow-hidden">
         <header className="bg-gradient-to-r from-[#ff7e36] to-[#ffba4e] text-[#1a1f2f] p-8 flex items-center">
           <h1 className="text-4xl font-bold m-0">Privacy Policy</h1>
         </header>
-
         <div className="p-8">
           <p className=" text-xl font-medium leading-relaxed mb-8 pb-4 border-b border-gray-200">
             Welcome to Let's Outsource. Your privacy is important to us, and we
             are committed to safeguarding your personal information. This policy
             outlines how we collect, use, and protect your data.
           </p>
-
           <section className=" text-base font-medium leading-relaxed text-[#1a1f2f] mb-8">
             <h2 className="text-2xl lg:text-3xl font-bold leading-tight tracking-tight text-[#ff7e36] mb-4">
               1. Introduction
@@ -23,7 +21,6 @@ const PrivacyPolicy = () => {
               we collect, use, and protect your data.
             </p>
           </section>
-
           <section className=" text-base font-medium leading-relaxed text-[#1a1f2f] mb-8">
             <h2 className="text-2xl lg:text-3xl font-bold leading-tight tracking-tight text-[#ff7e36] mb-4">
               2. Information We Collect

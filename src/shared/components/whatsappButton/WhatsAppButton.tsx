@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import "./whatsappButton.css";
 const WhatsAppButton = () => {
   const handleClick = () => {
@@ -6,7 +7,13 @@ const WhatsAppButton = () => {
   };
   return (
     <div className="whatsapp-button-container" onClick={handleClick}>
-      <img src="/whatsappicon.webp" alt="WhatsApp" className="whatsapp-icon" />
+      <Image
+        src="/whatsappicon.webp"
+        alt="WhatsApp"
+        className="whatsapp-icon"
+        width={50}
+        height={50}
+      />
     </div>
   );
 };

@@ -16,6 +16,7 @@ interface FormErrors {
   subject?: string;
   message?: string;
 }
+
 const ContactUs = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -27,6 +28,7 @@ const ContactUs = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submitMessage, setSubmitMessage] = useState<string>("");
   const [submitError, setSubmitError] = useState<string>("");
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -42,6 +44,7 @@ const ContactUs = () => {
       }));
     }
   };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitMessage("");
@@ -91,74 +94,80 @@ const ContactUs = () => {
   };
 
   return (
-    <section className="relative bg-white max-w-[1200px] mx-auto  px-4 text-center py-28">
-      <p className="text-[#000000B8] font-medium text-[14px] leading-6 font-sora">
-        CONTACT US
+    <section className="relative bg-white max-w-[1200px] mx-auto px-2 sm:px-0 text-center py-8 sm:py-12 md:py-16">
+      <p className="text-[#000000B8] font-medium text-[14px] sm:text-[14px] leading-6 font-sora">
+        CALL TO ACTION
       </p>
       <div className="">
         <Image
           src="/bgorange.png"
           alt="orange glow background"
           fill
-          className="object-contain mt-30"
+          className="object-contain mt-20 sm:mt-24 md:mt-30"
         />
       </div>
-      <p className="text-[#0000008A] text-[14px] leading-7 mt-1 font-sora font-normal max-w-[800px] mx-auto">
-        Our skilled operators specialize in managing industry-leading systems
-        like iCabbi, Autocab, and <br /> CabTreasure. With their expertise, we
-        ensure every ride is dispatched smoothly, accurately, and on
-        time—providing both drivers and passengers with a reliable experience.
+      <p className="text-[#0000008A] text-[12px] sm:text-[14px] leading-6 sm:leading-7 mt-1 font-sora font-normal max-w-[90%] sm:max-w-[80%] md:max-w-[800px] mx-auto">
+        Ready to reduce costs and boost your dispatch efficiency?{" "}
+        <br className="hidden sm:hidden" />
+        Our expert team provides tailored outsourcing solutions designed to
+        streamline operations, <br className="hidden sm:hidden" /> enhance
+        accuracy, and improve delivery times—helping your business save more.
       </p>
-      <div className="relative mt-20 bg-[#FAFAFA] border border-[#E6E6E6] rounded-3xl max-w-[600px] mx-auto px-8 py-10 shadow-md hover:shadow-xl">
-        <div className="flex justify-center mb-4 text-center">
+      <div className="relative mt-6 sm:mt-10 md:mt-14 bg-[#FAFAFA] border border-[#E6E6E6] rounded-3xl max-w-[96%] sm:max-w-[540px] md:max-w-[600px] mx-auto px-4 sm:px-0 md:px-8 py-6 sm:py-8 md:py-10 shadow-md hover:shadow-xl">
+        <div className="flex justify-center mb-3 sm:mb-4 text-center">
           <Image
             src="/blacklogo.png"
             alt="letsoutsource logo"
-            width={120}
-            height={40}
+            width={100}
+            height={32}
+            sizes="(max-width: 640px) 80vw, 120px"
+            className="object-contain"
           />
         </div>
-        <h2 className="text-[#000000] text-[24px] font-semibold leading-[100%] font-sora">
+        <h2 className="text-[#000000] text-[20px] sm:text-[22px] md:text-[24px] font-semibold leading-[100%] font-sora">
           Ready To Chat
         </h2>
-        <p className="text-[#0000008A] text-[14px] leading-7 mt-2 font-sora font-normal max-w-sm text-center mx-auto">
+        <p className="text-[#0000008A] text-[13px] sm:text-[14px] leading-6 sm:leading-7 mt-2 font-sora font-normal max-w-[95%] sm:max-w-sm text-center mx-auto">
           Exceptional customer care to boost satisfaction and enhance long-term
           customer loyalty.
         </p>
 
         {submitMessage && (
-          <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-[14px] font-sora">
+          <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-green-50 border border-green-200 rounded-lg text-green-700 text-[13px] sm:text-[14px] font-sora">
             {submitMessage}
           </div>
         )}
 
         {submitError && (
-          <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-[14px] font-sora">
+          <div className="mt-3 sm:mt-4 p-2 sm:p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-[13px] sm:text-[14px] font-sora">
             {submitError}
           </div>
         )}
 
-        <form className="mt-8 space-y-5 text-left" onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <form
+          className="mt-6 sm:mt-8 space-y-4 sm:space-y-5 text-left"
+          onSubmit={handleSubmit}
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
             <div>
               <label
                 htmlFor="name"
-                className="block text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-2"
+                className="block text-[13px] sm:text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-1 sm:mb-2"
               >
                 Name
               </label>
               <input
                 id="name"
                 type="text"
-                placeholder="John"
+                placeholder="Jansher"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full h-10.5 px-2 py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+                className={`w-full h-9 sm:h-10.5 px-2 py-1.5 sm:py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
                   errors.name ? "border-red-500" : "border-[#EBEBEB]"
                 }`}
               />
               {errors.name && (
-                <p className="text-red-500 text-[12px] font-sora mt-1">
+                <p className="text-red-500 text-[11px] sm:text-[12px] font-sora mt-1">
                   {errors.name}
                 </p>
               )}
@@ -166,22 +175,22 @@ const ContactUs = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-2"
+                className="block text-[13px] sm:text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-1 sm:mb-2"
               >
                 Email
               </label>
               <input
                 id="email"
                 type="email"
-                placeholder="John@gmail.com"
+                placeholder="jsher@letsoutsource.biz"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full h-10.5 px-2 py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+                className={`w-full h-9 sm:h-10.5 px-2 py-1.5 sm:py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
                   errors.email ? "border-red-500" : "border-[#EBEBEB]"
                 }`}
               />
               {errors.email && (
-                <p className="text-red-500 text-[12px] font-sora mt-1">
+                <p className="text-red-500 text-[11px] sm:text-[12px] font-sora mt-1">
                   {errors.email}
                 </p>
               )}
@@ -190,7 +199,7 @@ const ContactUs = () => {
           <div>
             <label
               htmlFor="subject"
-              className="block  text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-2"
+              className="block text-[13px] sm:text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-1 sm:mb-2"
             >
               Subject
             </label>
@@ -200,12 +209,12 @@ const ContactUs = () => {
               placeholder="Your main Object"
               value={formData.subject}
               onChange={handleChange}
-              className={`w-full h-10.5 px-2 py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+              className={`w-full h-9 sm:h-10.5 px-2 py-1.5 sm:py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
                 errors.subject ? "border-red-500" : "border-[#EBEBEB]"
               }`}
             />
             {errors.subject && (
-              <p className="text-red-500 text-[12px] font-sora mt-1">
+              <p className="text-red-500 text-[11px] sm:text-[12px] font-sora mt-1">
                 {errors.subject}
               </p>
             )}
@@ -213,7 +222,7 @@ const ContactUs = () => {
           <div>
             <label
               htmlFor="message"
-              className="block text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-2"
+              className="block text-[13px] sm:text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-1 sm:mb-2"
             >
               Message
             </label>
@@ -222,12 +231,12 @@ const ContactUs = () => {
               placeholder="Write your message here.."
               value={formData.message}
               onChange={handleChange}
-              className={`w-full px-2 py-2 h-[120px] border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white resize-none outline-none transition ${
+              className={`w-full px-2 py-1.5 sm:py-2 h-[100px] sm:h-[110px] md:h-[120px] border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white resize-none outline-none transition ${
                 errors.message ? "border-red-500" : "border-[#EBEBEB]"
               }`}
             />
             {errors.message && (
-              <p className="text-red-500 text-[12px] font-sora mt-1">
+              <p className="text-red-500 text-[11px] sm:text-[12px] font-sora mt-1">
                 {errors.message}
               </p>
             )}
@@ -235,7 +244,7 @@ const ContactUs = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-4 bg-[#FE9C00] text-white text-[16px] font-sora rounded-lg cursor-pointer hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 sm:py-4 bg-[#FE9C00] text-white text-[14px] sm:text-[16px] font-sora rounded-lg cursor-pointer hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
