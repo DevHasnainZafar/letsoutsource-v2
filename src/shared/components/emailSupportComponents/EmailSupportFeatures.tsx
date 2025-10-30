@@ -27,7 +27,7 @@ const EmailSupportFeatures = () => {
   ];
 
   return (
-    <section className="w-full pt-2 pb-75 sm:pt-16 sm:pb-16 md:pt-30 md:pb-80 px-4 sm:px-0 relative">
+    <section className="w-full pt-2 pb-75 sm:pt-10 sm:pb-80 md:pt-10 md:pb-80 px-4 sm:px-0 relative">
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-start justify-between gap-8 sm:gap-10 md:gap-12">
         <div className="lg:w-[40%] w-full">
           <p className="font-poppins font-medium text-[14px] sm:text-[15px] md:text-[16px] leading-[22px] sm:leading-[24px] text-[#000000B8] uppercase mb-2 sm:mb-3 md:mb-2 text-center lg:text-left">

@@ -219,7 +219,7 @@ const ContactPage = () => {
                   <input
                     id="name"
                     type="text"
-                    placeholder="Jan Sher"
+                    placeholder="Your name"
                     value={formData.name}
                     onChange={handleChange}
                     className={`w-full px-3 py-1.5 sm:py-2 rounded-lg bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-[#FE9C00] outline-none text-[14px] sm:text-[16px] ${
@@ -245,7 +245,7 @@ const ContactPage = () => {
                   <input
                     id="email"
                     type="email"
-                    placeholder="jsher@letsoutsource.co.uk"
+                    placeholder="Your email"
                     value={formData.email}
                     onChange={handleChange}
                     className={`w-full px-3 py-1.5 sm:py-2 rounded-lg bg-white/20 text-white placeholder-white/70 focus:ring-2 focus:ring-[#FE9C00] outline-none text-[14px] sm:text-[16px] ${
@@ -329,7 +329,7 @@ const ContactPage = () => {
               {
                 label: "Address",
                 value:
-                  "D739 Arbab Street, Block D, 5th Road Commercial market Rawalpindi",
+                  "B2-317, Sher Plaza, Haji Chowk, Muslim Town Sadiqabad, a Rawalpindi",
               },
               {
                 label: "Email",

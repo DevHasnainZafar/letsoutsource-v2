@@ -34,7 +34,7 @@ const HomeServices = () => {
           <span className="text-white">Services</span>
         </>
       ),
-      text: "Our professionals handle email queries with speed and precision, ensuring your customers always get timely and accurate responses — enhancing your brand's reputation for reliability.",
+      text: "Our professionals handle email queries with speed and precision, ensuring your customers always get timely and accurate responses — enhancing your brand's reputation.",
       image: "/smilingwoman.avif",
       link: "/emailSupport",
     },

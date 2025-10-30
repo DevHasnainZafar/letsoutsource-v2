@@ -33,10 +33,17 @@ const CustomerSupport = () => {
             animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          Customer
+          Customer Support That
           <br />
-          Support
+          Looks After Your Customers
         </h1>
+        <p
+          className={`font-sora text-[16px] md:text-[20px] text-[#FFFFFFCC] leading-[26px] mb-6 transition-all duration-1000 ease-out delay-150 ${
+            animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          24/7 support • Phone, chat, email • Branded as you, not us
+        </p>
         <Link
           href="/contact"
           className={`border-[1.5px] border-white rounded-[233px] px-4 py-2 flex items-center justify-center gap-2 mx-auto cursor-pointer transition-all duration-1000 ease-out delay-200 hover:bg-[#d7d7d7f4] hover:text-black ${

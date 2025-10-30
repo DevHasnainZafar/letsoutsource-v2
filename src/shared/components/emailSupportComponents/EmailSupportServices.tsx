@@ -10,7 +10,7 @@ const EmailSupportServices = () => {
   ];
 
   return (
-    <div className="max-w-[1200px] mx-auto pt-10 sm:pt-35 pb-6 sm:pb-15 px-4 sm:px-0">
+    <div className="max-w-[1200px] mx-auto pt-10 sm:pt-12 pb-6 sm:pb-12 px-4 sm:px-0">
       <div className="grid lg:grid-cols-2 items-stretch gap-6 sm:gap-10">
         <div className="flex flex-col justify-center space-y-3 h-full">
           <p className="text-[#000000B8] font-medium text-[14px] sm:text-[16px] leading-6 uppercase text-center lg:text-left">

@@ -42,7 +42,7 @@ const Navbar = () => {
     ? "bg-black/10 backdrop-blur-md"
     : "bg-transparent";
 
-  const logo = isCareerStyle ? "/blacklogo.png" : "/letsoutsourcelogo.png";
+  const logo = isCareerStyle ? "/blacklogo.png" : "/letsoutsourcelogo.avif";
   const arrow = isCareerStyle ? "/arrowdownblack.png" : "/arrowdown.png";
 
   return (

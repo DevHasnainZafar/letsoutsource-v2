@@ -1,8 +1,5 @@
-"use client";
-import React from "react";
 import PerfectPartnerBanner from "./PerfectPartnerBanner";
 import Image from "next/image";
-
 const comments = [
   {
     name: "Simon Stiff",
@@ -93,9 +90,8 @@ const UserComments = () => {
   const col3 = comments.filter((_, i) => i % 4 === 2);
   const col4 = comments.filter((_, i) => i % 4 === 3);
   const columns = [col1, col2, col3, col4];
-
   return (
-    <section className="relative w-full sm:pt-24 pt-10 pb-80 sm:pb-80 bg-white">
+    <section className="relative w-full sm:pt-12 pt-10 pb-80 sm:pb-80 bg-white">
       <div className="max-w-[1200px] mx-auto px-2 sm:px-0">
         <p className="font-poppins font-medium text-[16px] leading-[24px] text-center text-[#000000B8] mb-2 uppercase">
           Testimonial

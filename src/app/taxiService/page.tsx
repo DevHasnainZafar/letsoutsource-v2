@@ -2,6 +2,7 @@ import { UserComments } from "@/shared/components";
 import {
   TaxiService,
   TaxiServiceFeatures,
+  TaxiServiceSpecialized,
   TaxiServiceSteps,
 } from "@/shared/components/taxiServicesComponents";
 
@@ -23,6 +24,7 @@ const TaxiServicePage = () => {
   return (
     <>
       <TaxiService />
+      <TaxiServiceSpecialized/>
       <TaxiServiceFeatures />
       <TaxiServiceSteps />
       <UserComments />

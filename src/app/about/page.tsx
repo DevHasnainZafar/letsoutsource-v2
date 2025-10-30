@@ -3,6 +3,7 @@ import {
   AboutCards,
   AboutFeatures,
   AboutHome,
+  AboutParntership,
 } from "@/shared/components/aboutComponents";
 import { Metadata } from "next";
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ const AboutPage = () => {
     <div>
       <AboutHome />
       <AboutFeatures />
+      <AboutParntership />
       <AboutCards />
       <div className="relative">
         <PartnersLogos />

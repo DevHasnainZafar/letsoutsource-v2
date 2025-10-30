@@ -1,36 +1,34 @@
-"use client";
 import Image from "next/image";
-import React from "react";
-
 const features = [
   {
     icon: "/mobile.png",
-    title: "Seamless Integration",
+    title: "Live Booking",
     description:
-      "Dedicated operators embedded into your workflow, tools, and SLAs.",
+      "We answer your passenger calls or chats in your company name, quote fares, and confirm pickups.",
   },
   {
     icon: "/location.png",
-    title: "Accuracy & Speed",
+    title: "Dispatching",
     description:
-      "On-time dispatch that keeps drivers moving and passengers satisfied.",
+      "Our trained controllers assign the right job to the right driver, manage nearest car logic.",
   },
   {
     icon: "/camera.png",
-    title: "Lower Overheads",
+    title: "Peak-Time Cover",
     description:
-      "Remote staffing that cuts fixed costs and scales with demand.",
+      "Last-minute sickness, weekend chaos, or early-morning airport rush — we’ve got you covered.",
   },
   {
     icon: "/clock.png",
-    title: "Always On",
-    description: "24/7/365 coverage for peak hours, late nights, and weekends.",
+    title: "SLA & Reporting",
+    description:
+      "We monitor and report key metrics  giving you real visibility into performance, not guesswork.",
   },
 ];
 
 const TaxiServiceFeatures: React.FC = () => {
   return (
-    <section className="w-full max-w-[1200px] mx-auto py-12 sm:py-20 lg:py-30 px-2 sm:px-0">
+    <section className="w-full max-w-[1200px] mx-auto py-12 sm:py-20 lg:py-20 px-2 sm:px-0">
       <p
         className="font-poppins font-medium text-[14px] sm:text-[16px] leading-[22px] sm:leading-[24px] uppercase text-center text-[#000000B8] mb-2"
         aria-hidden
@@ -38,13 +36,15 @@ const TaxiServiceFeatures: React.FC = () => {
         Features
       </p>
       <h2 className="font-sora font-semibold text-[28px] sm:text-[36px] lg:text-[44px] leading-[100%] text-center text-[#000000] mb-3">
-        Our Service Features
+        Our Service <br />
+        Features
       </h2>
       <p className="text-center text-[14px] sm:text-[16px] lg:text-[18px] leading-[22px] sm:leading-[25px] lg:leading-[27px] text-[#0000008A] max-w-[90%] sm:max-w-[820px] mx-auto mb-8 sm:mb-10 lg:mb-12">
-        Fast, reliable, and always within reach — your go-to solution for taxi
-        bookings.
+        We manage your bookings, dispatch, and customer support around the clock
+        — using your existing systems like iCabbi, Autocab, Cordic, CabTreasure,
+        or Cab9.
       </p>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-4 gap-y-6 sm:gap-y-8 lg:gap-y-10 items-start justify-items-center mt-2 sm:mt-16 lg:mt-20">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-4 gap-y-6 sm:gap-y-8 lg:gap-y-10 items-start justify-items-center mt-2 sm:mt-10 lg:mt-10">
         {features.map((f, i) => (
           <div
             key={f.title}

@@ -1,11 +1,8 @@
-"use client";
-import React from "react";
 import Image from "next/image";
 import PerfectPartnerBanner from "../common/PerfectPartnerBanner";
-
 const PartnerPage = () => {
   return (
-    <div className="relative w-full max-w-[1200px] mx-auto flex flex-col items-center justify-center pt-20 sm:pt-25 pb-80 sm:pb-80 px-2 sm:px-0">
+    <div className="relative w-full max-w-[1200px] mx-auto flex flex-col items-center justify-center pt-20 sm:pt-12 pb-80 sm:pb-80 px-2 sm:px-0">
       <div className="text-center mb-10 sm:mb-14">
         <h3 className="text-[#000000B8] font-medium text-[14px] sm:text-[16px] leading-[24px]">
           PARTNER
@@ -25,8 +22,8 @@ const PartnerPage = () => {
               Data-Driven Insights
             </h3>
             <p className="text-[#0000008A] text-[13px] sm:text-[14px] leading-[20px] sm:leading-[21px] max-w-[300px]">
-              We analyze every interaction to provide actionable insights that
-              help you understand your customers better
+              Every chat is tracked. We spot repeat problems, common questions,
+              and customer sentiment — and give you clear insight.
             </p>
           </div>
           <div className="relative border border-[#00000014] rounded-xl overflow-hidden h-[280px] sm:h-[310px]">
@@ -53,8 +50,9 @@ const PartnerPage = () => {
               Scalable Solutions
             </h3>
             <p className="text-[#FFFFFF8A] text-[13px] sm:text-[14px] leading-[20px] sm:leading-[21px]">
-              Whether you’re a startup or a global enterprise, our support
-              scales with your business needs.
+              Busy weekend? Night work? Sudden growth? Our team scales with
+              demand, so you never have to panic about cover, hiring, or
+              training.
             </p>
           </div>
         </div>
@@ -70,11 +68,12 @@ const PartnerPage = () => {
           </div>
           <div className="bg-gradient-to-b from-[#FCFCFC] to-[#F5F5F5] border border-[#F0F0F0] rounded-2xl p-6 shadow-sm">
             <p className="text-[#0000008A] text-[13px] sm:text-[14px] leading-[20px] sm:leading-[21px]">
-              We bring the latest tech innovations to your customer support,
-              ensuring your business stays ahead of the curve.
+              Your operation keeps moving when we’re on it. We support booking
+              queries, ETAs, driver follow-up and complaints handling for taxi
+              and private hire firms
             </p>
             <h3 className="font-sora font-semibold text-[20px] sm:text-[22px] text-black mt-8 sm:mt-10">
-              Innovation at the Core
+              Taxi & Transport Specialism
             </h3>
           </div>
         </div>

@@ -1,37 +1,33 @@
-"use client";
-import React from "react";
-
 const SupportFeatures = () => {
   const features = [
     {
       id: "I",
-      title: "24/7 Live Chat Support",
-      desc: "Get instant assistance anytime with our 24/7 live chat, ensuring your customers are never left waiting for support.",
+      title: "Call Handling & Enquiries",
+      desc: "We answer every call in your company name — bookings, updates, complaints, and general questions handled instantly. No voicemails. No missed opportunities.",
     },
     {
       id: "II",
-      title: "Email Support with Fast Response Times",
-      desc: "We deliver quick and accurate email responses, keeping your communication smooth, professional, and always reliable.",
+      title: "Live Chat & Messaging",
+      desc: "We manage real-time chats across WhatsApp, Messenger, and your website. Fast, friendly, and professional — customers get instant answers and updates.",
     },
     {
       id: "III",
-      title: "Dedicated Support Managers",
-      desc: "A single dedicated manager as your point of contact, ensuring personalized support that truly understands your needs.",
+      title: "Email Support & Ticketing",
+      desc: "We clear your inbox daily — replying to customers, gathering details, sending confirmations, and closing tickets properly. No more missed weekend messages.",
     },
     {
       id: "IV",
-      title: "Comprehensive FAQs and Help Center",
-      desc: "Comprehensive self-service resources that empower customers with faster, hassle-free problem-solving.",
+      title: "Complaint Handling & Escalation",
+      desc: "We manage complaints calmly and professionally — listening, logging, and de-escalating. You’re only involved when something truly needs your attention.",
     },
     {
       id: "V",
-      title: "Multi-Language Support Available",
-      desc: "Seamless multi-language support that lets your customers communicate with ease in the language they prefer.",
+      title: "Updates & Courtesy Calls",
+      desc: "We keep customers informed with clear updates: ETAs, confirmations, driver status, and collection alerts — fewer angry follow-ups, smoother experiences.",
     },
   ];
-
   return (
-    <section className="w-full pt-12 pb-12 sm:pt-16 sm:pb-16 md:pt-20 md:pb-6 px-4 sm:px-0">
+    <section className="w-full pt-12 pb-12 sm:pt-16 sm:pb-16 md:pt-16 md:pb-6 px-4 sm:px-0">
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-start justify-between gap-8 sm:gap-10 md:gap-12">
         <div className="lg:w-[40%] w-full">
           <p className="font-poppins font-medium text-[14px] sm:text-[15px] md:text-[16px] leading-[22px] sm:leading-[24px] text-[#000000B8] uppercase mb-2 sm:mb-3 md:mb-2 text-center lg:text-left">

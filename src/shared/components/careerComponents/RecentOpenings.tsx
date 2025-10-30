@@ -1,7 +1,15 @@
-"use client"
+"use client";
 import React from "react";
 const RecentOpenings = () => {
   const jobs = [
+    {
+      location: "Rawalpindi",
+      timeAgo: "3 days ago",
+      title: "iCabbi Dispatcher",
+      description:
+        "Handle client inquiries efficiently and provide top-quality support for our customers.",
+      positions: "1 Position",
+    },
     {
       location: "Islamabad",
       timeAgo: "2 days ago",
@@ -13,7 +21,7 @@ const RecentOpenings = () => {
     {
       location: "Nowshera",
       timeAgo: "4 days ago",
-      title: "ICabbi Operator",
+      title: "iCabbi Operator",
       description:
         "Handle client inquiries efficiently and provide top-quality support for our customers.",
       positions: "1 Position",

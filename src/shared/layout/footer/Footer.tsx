@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row md:justify-between gap-10 md:gap-0 px-2">
         <div className="md:max-w-xs">
           <Image
-            src="/letsoutsourcelogo.png"
+            src="/letsoutsourcelogo.avif"
             alt="letsoutsource"
             height={100}
             width={100}
@@ -54,18 +54,26 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="order-2 md:order-1">
             <h3 className="text-[20px] mb-4">Contact</h3>
             <ul className="space-y-3 text-[16px] text-white">
               <li>
-                D739 Arbab Street, Block D, <br /> 5th Road Commercial Market,
+                B2-317, Sher Plaza, Haji Chowk, <br /> Muslim Town Sadiqabad,
                 Rawalpindi
               </li>
               <li>01623 396 943</li>
-              <li>jsher@letsoutsource.co.uk</li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="inline-block bg-[#FE9C00] text-white font-medium px-5 py-2 rounded-full hover:bg-[#e58a00] transition-all duration-300"
+                >
+                  Request a Quote
+                </Link>
+              </li>
             </ul>
           </div>
-          <div>
+
+          <div className="order-1 md:order-2">
             <h3 className="text-[20px] mb-4">Social</h3>
             <ul className="space-y-3 text-[16px] text-white">
               <li>
@@ -100,7 +108,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="mt-10 border-t border-[#FFFFFF66] py-4 text-[14px] flex flex-col md:flex-row justify-between items-center max-w-[1200px] mx-auto px-2 text-[#FFFFFFB2]">
-        <p>©2019 Lets outsource. All rights reserved</p>
+        <p>©2019 Lets Outsource. All rights reserved</p>
         <div className="flex flex-wrap justify-center space-x-2 md:space-x-4 mt-2 md:mt-0">
           <Link href="/privacypolicy" className="hover:text-white">
             Privacy Policy

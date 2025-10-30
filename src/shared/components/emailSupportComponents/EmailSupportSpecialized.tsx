@@ -1,6 +1,4 @@
-"use client";
 import Image from "next/image";
-
 const EmailSupportSpecialized = () => {
   const services = [
     {
@@ -68,8 +66,8 @@ const EmailSupportSpecialized = () => {
               </div>
             ))}
           </div>
-          <div className="lg:pl-8 flex items-stretch">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full flex-1">
+          <div className="block lg:pl-8 flex items-stretch mt-8 lg:mt-0">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl w-full flex-1 min-h-[300px] sm:min-h-[400px]">
               <Image
                 src="/workingperson.avif"
                 alt="Person working on laptop"

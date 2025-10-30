@@ -20,13 +20,13 @@ const EmailSupport = () => {
       suffix: "",
     },
     {
-      value: "30",
+      value: "84",
       label: "Number of Clients",
       icon: "/circlearrowright.png",
       suffix: "+",
     },
     {
-      value: "05",
+      value: "06",
       label: "Years of Experience",
       icon: "/circlearrowright.png",
       suffix: "+",

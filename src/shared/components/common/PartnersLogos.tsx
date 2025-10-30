@@ -2,17 +2,16 @@ import React from "react";
 import Image from "next/image";
 const PartnersLogos = () => {
   const logos = [
-    "/icabbi.png",
-    "/Breezecars.png",
+    "/breezecars.png",
     "/albatross.webp",
     "/uridowhite.webp",
     "/Booking.png",
-    // "/exelcars.png",
     "/novatech.png",
-    "/angelscars.png",
     "/A1taxi.png",
+    "/angelscars.png",
     "/asbcars.png",
-    "/DaddyCabs.webp",
+    "/iCabbi.png",
+    "/DaddyCabs.png",
     "/skullview.png",
     "/khanujalaw.png",
     "/cmac.webp",

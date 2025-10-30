@@ -116,15 +116,15 @@ const ContactUs = () => {
       <div className="relative mt-6 sm:mt-10 md:mt-14 bg-[#FAFAFA] border border-[#E6E6E6] rounded-3xl max-w-[96%] sm:max-w-[540px] md:max-w-[600px] mx-auto px-4 sm:px-0 md:px-8 py-6 sm:py-8 md:py-10 shadow-md hover:shadow-xl">
         <div className="flex justify-center mb-3 sm:mb-4 text-center">
           <Image
-            src="/blacklogo.png"
+            src="/Letsoutsource.webp"
             alt="letsoutsource logo"
-            width={100}
+            width={150}
             height={32}
             sizes="(max-width: 640px) 80vw, 120px"
             className="object-contain"
           />
         </div>
-        <h2 className="text-[#000000] text-[20px] sm:text-[22px] md:text-[24px] font-semibold leading-[100%] font-sora">
+        <h2 className="bg-gradient-to-r from-[#FE9C00] from-50% to-black to-100% bg-clip-text text-transparent text-[20px] sm:text-[22px] md:text-[24px] font-semibold leading-[100%] font-sora">
           Ready To Chat
         </h2>
         <p className="text-[#0000008A] text-[13px] sm:text-[14px] leading-6 sm:leading-7 mt-2 font-sora font-normal max-w-[95%] sm:max-w-sm text-center mx-auto">
@@ -152,17 +152,17 @@ const ContactUs = () => {
             <div>
               <label
                 htmlFor="name"
-                className="block text-[13px] sm:text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-1 sm:mb-2"
+                className="block text-[13px] sm:text-[14px] font-sora font-normal leading-[100%] mb-1 sm:mb-2"
               >
                 Name
               </label>
               <input
                 id="name"
                 type="text"
-                placeholder="Jansher"
+                placeholder="Your name"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full h-9 sm:h-10.5 px-2 py-1.5 sm:py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+                className={`w-full h-9 sm:h-10.5 px-2 py-1.5 sm:py-2 border rounded-lg text-[12px] font-sora placeholder-[#0000008A] bg-white outline-none transition ${
                   errors.name ? "border-red-500" : "border-[#EBEBEB]"
                 }`}
               />
@@ -175,17 +175,17 @@ const ContactUs = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-[13px] sm:text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-1 sm:mb-2"
+                className="block text-[13px] sm:text-[14px]  font-sora font-normal leading-[100%] mb-1 sm:mb-2"
               >
                 Email
               </label>
               <input
                 id="email"
                 type="email"
-                placeholder="jsher@letsoutsource.biz"
+                placeholder="Your email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full h-9 sm:h-10.5 px-2 py-1.5 sm:py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+                className={`w-full h-9 sm:h-10.5 px-2 py-1.5 sm:py-2 border rounded-lg text-[12px] font-sora  placeholder-[#0000008A] bg-white outline-none transition ${
                   errors.email ? "border-red-500" : "border-[#EBEBEB]"
                 }`}
               />
@@ -199,7 +199,7 @@ const ContactUs = () => {
           <div>
             <label
               htmlFor="subject"
-              className="block text-[13px] sm:text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-1 sm:mb-2"
+              className="block text-[13px] sm:text-[14px] font-sora font-normal leading-[100%] mb-1 sm:mb-2"
             >
               Subject
             </label>
@@ -209,7 +209,7 @@ const ContactUs = () => {
               placeholder="Your main Object"
               value={formData.subject}
               onChange={handleChange}
-              className={`w-full h-9 sm:h-10.5 px-2 py-1.5 sm:py-2 border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white outline-none transition ${
+              className={`w-full h-9 sm:h-10.5 px-2 py-1.5 sm:py-2 border rounded-lg text-[12px] font-sora placeholder-[#0000008A] bg-white outline-none transition ${
                 errors.subject ? "border-red-500" : "border-[#EBEBEB]"
               }`}
             />
@@ -222,7 +222,7 @@ const ContactUs = () => {
           <div>
             <label
               htmlFor="message"
-              className="block text-[13px] sm:text-[14px] text-[#000] font-sora font-normal leading-[100%] mb-1 sm:mb-2"
+              className="block text-[13px] sm:text-[14px]  font-sora font-normal leading-[100%] mb-1 sm:mb-2"
             >
               Message
             </label>
@@ -231,7 +231,7 @@ const ContactUs = () => {
               placeholder="Write your message here.."
               value={formData.message}
               onChange={handleChange}
-              className={`w-full px-2 py-1.5 sm:py-2 h-[100px] sm:h-[110px] md:h-[120px] border rounded-lg text-[12px] font-sora text-[#000] placeholder-[#0000008A] bg-white resize-none outline-none transition ${
+              className={`w-full px-2 py-1.5 sm:py-2 h-[100px] sm:h-[110px] md:h-[120px] border rounded-lg text-[12px] font-sora  placeholder-[#0000008A] bg-white resize-none outline-none transition ${
                 errors.message ? "border-red-500" : "border-[#EBEBEB]"
               }`}
             />
