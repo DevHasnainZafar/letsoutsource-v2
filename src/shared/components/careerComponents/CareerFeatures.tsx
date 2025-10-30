@@ -26,7 +26,7 @@ const CareerFeatures = () => {
   ];
 
   return (
-    <section className="w-full py-12 sm:py-16 md:py-32 relative px-4 sm:px-0">
+    <section className="w-full py-12 sm:py-12 md:py-12 relative px-2 sm:px-0">
       <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-start justify-between gap-8 sm:gap-10 md:gap-12">
         <div className="lg:w-[40%]">
           <p className="font-poppins font-medium text-[14px] sm:text-[15px] md:text-[16px] leading-[22px] sm:leading-[24px] text-[#000000B8] uppercase mb-2 sm:mb-3 md:mb-2">
