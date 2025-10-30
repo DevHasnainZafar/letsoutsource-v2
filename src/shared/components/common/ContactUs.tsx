@@ -116,7 +116,7 @@ const ContactUs = () => {
       <div className="relative mt-6 sm:mt-10 md:mt-14 bg-[#FAFAFA] border border-[#E6E6E6] rounded-3xl max-w-[96%] sm:max-w-[540px] md:max-w-[600px] mx-auto px-4 sm:px-0 md:px-8 py-6 sm:py-8 md:py-10 shadow-md hover:shadow-xl">
         <div className="flex justify-center mb-3 sm:mb-4 text-center">
           <Image
-            src="/Letsoutsource.webp"
+            src="/Letsoutsource.png"
             alt="letsoutsource logo"
             width={150}
             height={32}
